@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Calculus Assignment 1}
+\author{Erik Paskalev }
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Compute the derivative of the function}
+
+\begin{equation}
+x(t) = t^3
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\lim_{\Delta t \to 0} \frac{x(t+\Delta t)-x(t)}{\Delta t} & = \lim_{\Delta t \to 0} \frac{(t+\Delta t)^3 - t^3}{\Delta t} = \lim_{\Delta t \to 0} \frac{t^3 + 3t^2\Delta t + 3t {\Delta t}^2 + {\Delta t}^3 - t^3}{\Delta t} = \\ 
+& = \lim_{\Delta t \to 0} 3t^2 + 3t\Delta t + {\Delta t}^2 = 3t^2 + 0 + 0 = 3t^2
+\end{split}
+\end{equation}
+
+\section*{Compute the derivative of the function}
+
+\begin{equation}
+x(t) = \frac{1}{t}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\lim_{\Delta t \to 0} \frac{x(t+\Delta t)-x(t)}{\Delta t} & = \lim_{\Delta t \to 0} \frac{\frac{1}{t+\Delta t} - \frac{1}{t}}{\Delta t} = \lim_{\Delta t \to 0} \frac{t - t - \Delta t}{(t + \Delta t)\Delta t} = \\ 
+& = \lim_{\Delta t \to 0} -\frac{1}{t(t + \Delta t)} = \lim_{\Delta t \to 0} -\frac{1}{t^2 + t\Delta t} = -\frac{1}{t^2}
+\end{split}
+\end{equation}
+
+\end{document}

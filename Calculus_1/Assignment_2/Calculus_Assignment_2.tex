@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Calculus Assignment 2}
+\author{Erik Paskalev}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{\normalfont Show that the power }
+
+\begin{equation}
+(t + \Delta t)^4 = (t + \Delta t)(t + \Delta t)(t + \Delta t)(t + \Delta t)
+\end{equation}
+
+\section*{\normalfont can be written as}
+
+\begin{equation}
+t^4 = 4t^3\Delta t + (...)(\Delta t)^2
+\end{equation}
+
+\section*{Answer:}
+
+\begin{equation}
+\begin{split}
+(t+\Delta t)^4 & = t^4 + 4t^3\Delta t + 6t^2{\Delta t}^2 + 4t{\Delta t}^3 + {\Delta t}^4 = \\ 
+& =  t^4 + 4t^3\Delta t + (6t^2 + 4t\Delta t + {\Delta t}^2){\Delta t}^2
+\end{split}
+\end{equation}
+
+\section{\normalfont Use the previous result to show, without using the power rule, that}
+
+\begin{equation}
+(t^4)' = 4t^3
+\end{equation}
+
+\section*{Answer:}
+
+\begin{equation}
+\begin{split}
+\lim_{\Delta t \to 0} \frac{x(t+\Delta t)-x(t)}{\Delta t} & = \lim_{\Delta t \to 0} \frac{(t+\Delta t)^4 - t^4}{\Delta t} = \\ 
+& = \lim_{\Delta t \to 0} \frac{t^4 + 4t^3\Delta t + 6t^2{\Delta t}^2 + 4t{\Delta t}^3 + {\Delta t}^4 - t^4}{\Delta t} = \\ 
+& = \lim_{\Delta t \to 0} 4t^3 + 6t^2\Delta t + 4t{\Delta t}^2 + {\Delta t}^3 = 4t^3 + 0 + 0 = 4t^3
+\end{split}
+\end{equation}
+
+\subsection*{The reason the ${\Delta t}^2$ and higher order coefficients don't matter is because $\Delta t = 0$ so once we solve the indeterminate form and replace $\Delta t$ with the limit all coefficients behind $\Delta t$ are multiplied by 0.}
+
+\section{\normalfont Compute the derivative of the following functions using the power rule, the sum rule and the scaling rule.}
+
+\begin{equation}
+\begin{split}
+t^5 & = 5t^4 \\
+5t^4 & = 20t^3 \\
+2t + t^5 & = 2 + 5t^4 \\
+4t^2 + 2t^7 & = 8t + 14t^6 \\
+2 + 3t + 4t^2 + 5t^3 & = 3 + 8t + 15t^2 
+\end{split}
+\end{equation}
+
+\section{\normalfont Prove the scaling rule:}
+
+\begin{equation}
+(cx(t))' = c(x(t))'    
+\end{equation}
+
+\section*{\normalfont using the sum rule.}
+
+\section*{Proof:}
+
+\begin{equation}
+(cx(t))' = (\underbrace{x(t) + x(t) + ... + x(t)}_{\text{c times}})' = \underbrace{x(t)' + x(t)' + ... + x(t)'}_{\text{c times}} = c(x(t))'
+\end{equation}
+
+\end{document}

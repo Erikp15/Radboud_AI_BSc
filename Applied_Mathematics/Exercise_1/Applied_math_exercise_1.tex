@@ -1,0 +1,379 @@
+\documentclass[15px]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\stackMath
+
+\title{Applied Mathematics Exercise 1}
+\author{Erik Paskalev}
+
+
+\begin{document}
+
+\maketitle
+
+\section{\normalfont Is there more information in a string of 10 letters from \{A,...,Z\} or in a string of 26 numbers from \{0,...,9\} ? }
+
+\subsection*{Answer: The information in the string of 10 letters is the sum of information of each letter so the total is: \(10*(-log_2(\frac{1}{26}))\approx 47.004 \)  bits.
+Analogously for the 26 numbers we sum the information of each number: \(26*(-log_2(\frac{1}{10}))\approx 86.370 \) bits. So we can conclude that the string of 26 numbers contains more information.}.
+
+\section{\normalfont Calculate the entropy of each of the following variables.}
+
+\subsection*{\normalfont (a) Pixel values in an image whose possible grey values are all the integers from 0 to 255 with
+uniform probability. }
+
+\subsection*{Answer: The random variable ranges from 0 to 255 and the probability distribution is uniform so the entropy is: }
+\begin{equation}
+-\mathlarger{\sum}_{i=0}^{255} \frac{1}{256}log_2(\frac{1}{256}) = -log_2(\frac{1}{256}) = 9 \text{ bits}
+\end{equation} \\
+\subsection*{\normalfont (b) A population of persons classified by whether they are older, or not older, than the population's median age. }
+
+\subsection*{Answer: The probability distribution consists of two outcomes  - above median age and below each with 1/2 probability. Thus the entropy is:}
+\begin{equation}
+-\mathlarger{\sum}_{i=1}^{2} \frac{1}{2}log_2(\frac{1}{2}) = -log_2(\frac{1}{2}) = 1 \text{ bit}
+\end{equation} \\
+
+\subsection*{\normalfont (c) Gender in a tri-sexual insect population, whose three genders occur with probabilities \(\frac{1}{4}, \frac{1}{4}\) and \(\frac{1}{2}\)}
+
+\subsection*{ Answer: The probability distribution consists of 3 outcomes with probabilities \(\frac{1}{4}, \frac{1}{4}\) and \(\frac{1}{2}\). Thus the entropy is:}
+\begin{equation}
+- 2*\frac{1}{4}log_2(\frac{1}{4}) - \frac{1}{2}log_2(\frac{1}{2}) = \frac{3}{2} \text{ bits}
+\end{equation} \\
+
+\subsection*{\normalfont(d) Humans classified according to whether they are mammals or not.} 
+
+\subsection*{ Answer: Since all humans are mammals the probability distribution consists of one outcome with probability 1. Thus the entropy is:}
+\begin{equation}
+- log_2(1) = 0 \text{ bits}
+\end{equation} \\
+
+\section{\normalfont Let X denote the outcome of rolling a die.}
+
+\subsection*{\normalfont (a) Determine the entropy of X.}
+
+\subsection*{ Answer: Dice are six-sided and uniformly distributed. Thus the entropy is:}
+\begin{equation}
+-\mathlarger{\sum}_{i=1}^{6} \frac{1}{6}log_2(\frac{1}{6}) = -log_2(\frac{1}{6}) = log_2(6) \approx 2.584 \text{ bits}
+\end{equation} \\
+
+\subsection*{\normalfont (b) Calculate the expected number of bits per outcome if you encode the outcomes with the Huffman coding.}
+
+\subsection*{Answer: The Huffman encoding of the die is 00 for 1,01 for 2, 100 for 3, 101 for 4, 110 for 5, 111 for 6  Thus the entropy is:}
+\begin{equation}
+2*\frac{1}{6}*2 + 4*\frac{1}{6}*3 \approx 2.666  \text{ expected bits}
+\end{equation} \\
+
+\section{\normalfont There are two horse races taking place. In the first race 4 horses participate, of which two have probability \(\frac{3}{8}\) on victory, while the other two win with probability \(\frac{1}{8}\) . In the second race 7 horses partake. One of them is clearly the favorite with a victory probability of \(\frac{5}{8}\) . All other horses have equal winning odds.}
+
+\subsection*{\normalfont (a) Calculate the entropy for both races exactly, and simplify as much as possible. In which race the uncertainty is the largest?}
+
+\subsection*{ Answer: The distribution for the first race is: \(\frac{3}{8},\frac{3}{8},\frac{1}{8},\frac{1}{8}\). and for the second: \(\frac{5}{8},\frac{1}{8},\frac{1}{8},\frac{1}{8}\). Thus the entropy for both is:}
+\begin{equation}
+-2*\frac{3}{8}log_2(\frac{3}{8}) - 2*\frac{1}{8}log_2(\frac{1}{8}) = \frac{3}{4}log_2(\frac{8}{3}) + \frac{1}{4}log_2(8) \approx 1.811 \text{ bits for race 1} 
+\end{equation} \\
+
+\begin{equation}
+-\frac{5}{8}log_2(\frac{5}{8}) - 3*\frac{1}{8}log_2(\frac{1}{8}) = \frac{5} {8}log_2(\frac{8}{5}) + \frac{3}{8}log_2(8) \approx 1.548 \text{ bits for race 2}
+\end{equation}
+
+\subsection*{ This makes race 1 more uncertain than race 2.} \\
+
+\subsection*{\normalfont(b) Determine the Huffman code for both races.}
+
+\subsection*{ Answer: The Huffman encoding of race 1 is 0 for horse 1, 10 for horse 2, 110 for horse 3, 111 for horse 4. The Huffman encoding of race 2 is 0 for horse 1, 10 for horse 2, 110 for horse 3, 111 for horse 4.}
+
+\subsection*{\normalfont(c) Compute for both codes given in (b) the expected number of bits needed per outcome.}
+
+\subsection*{ Answer: The expected number of bits for code 1:}
+
+\begin{equation}
+\frac{3}{8} + 2*\frac{3}{8} + 3*\frac{1}{8} + 3*\frac{1}{8} = 1.875 \text{ bits for race 1} 
+\end{equation}
+
+\subsection*{ The expected number of bits for code 2:}
+
+\begin{equation}
+\frac{5}{8} + 2*\frac{1}{8} + 3*\frac{1}{8} + 3*\frac{1}{8} = 1.625 \text{ bits for race 2} 
+\end{equation}\\
+
+\subsection*{\normalfont(d) Are the codes found in (b) optimal?}
+
+\subsection*{ Answer: No, based on the Shannon theorem we can derive that the lowest expected number of bits needs to be equal to the entropy of the distribution to be optimal which for both races 1 and 2 is false.}
+
+\section{The outcomes of two (fair) dice are described by the random variables X and Y.}
+
+\subsection*{\normalfont (a) Give the joint probability distribution of X and Y (in other words, if you roll two dice X and Y at the same time, what are the possible outcomes and what is the probability of each outcome?).}
+
+\subsection*{ Answer: Since the two die are independent, X and Y are independent random variables. Thus the joint probability distribution of X and Y is:}
+
+\begin{equation}
+X = (1,2,3,4,5,6), P(X) = (\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6})
+\end{equation}
+
+\begin{equation}
+Y = (1, 2, 3, 4, 5, 6), P(Y) = (\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6})
+\end{equation}
+
+\begin{equation}
+P(X = x_i,Y = y_j) = P(X = x_i)P(Y = y_j) = \frac{1}{6}*\frac{1}{6} = \frac{1}{36}
+\end{equation}
+
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+P(X,Y) & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+1 & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) \\ \hline
+2 & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) \\ \hline
+3 &\(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) \\ \hline
+4 &\(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) \\ \hline
+5 &\(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) \\ \hline
+6 &\(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) & \(\frac{1}{36}\) \\ \hline
+\end{tabular}
+\end{adjustbox}
+\caption{Joint probability distribution visualization.} 
+\end{table}
+
+\subsection*{\normalfont (b) Calculate the exact entropy H(X,Y) of this distribution, and check that H(X,Y) = H(X) + H(Y).}
+
+\subsection*{ Answer: The entropy is:}
+
+\begin{equation}
+\begin{split}
+H(X,Y) & = -\mathlarger{\sum}_{i=0}^{6}\mathlarger{\sum}_{j=0}^{6} A_iB_jlog_2(A_iB_j) = \\
+& = -\mathlarger{\sum}_{i=0}^{36} \frac{1}{36}log_2(\frac{1}{36}) = log_2(36) \approx 5.169 \text{ bits}
+\end{split}
+\end{equation}
+
+\begin{equation}
+H(X) = -\mathlarger{\sum}_{i=0}^{6} \frac{1}{6}log_2(\frac{1}{6}) = log_2(6) \approx 2.584 \text{ bits}
+\end{equation}
+
+\begin{equation}
+H(Y) = -\mathlarger{\sum}_{i=0}^{6} \frac{1}{6}log_2(\frac{1}{6}) = log_2(6) \approx 2.584 \text{ bits}
+\end{equation}
+
+\begin{equation}
+H(X) + H(Y) \approx 2.584 + 2.584 \approx 5.168 \approx H(X,Y)
+\end{equation}
+
+\subsection*{\normalfont (c) Denote the sum of both outcomes by V, i.e. V = X + Y . Compute H(V) in 3 decimals and show that H(V) < H(X,Y).}
+
+\subsection*{ Answer: The entropy of V is:}
+
+\begin{table}[t]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+X+Y & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+4 & 5 & 6 & 7 & 8 & 9 & 10\\ \hline
+5 & 6 & 7 & 8 & 9 & 10 & 11\\ \hline
+6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+\end{tabular}
+\end{adjustbox}
+\caption{Visualization of all outcomes of X+Y} 
+\end{table}
+
+\begin{table}[t]
+\centering
+\begin{adjustbox}{width=0.8\linewidth}
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+
+V & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+P(V) & $\frac{1}{36}$ & $\frac{1}{18}$ & $\frac{1}{12}$ & $\frac{1}{9}$ & $\frac{5}{36}$ & $\frac{1}{6}$ & $\frac{5}{36}$ & $\frac{1}{9}$ & $\frac{1}{12}$ & $\frac{1}{18}$ & $\frac{1}{36}$\\
+\end{tabular}
+\end{adjustbox}
+\caption{Visualization of the probability distribution of V.} 
+\end{table}
+
+\begin{equation}
+\begin{split}
+H(V) & = H(X+Y) = -2*\frac{1}{36}log_2(\frac{1}{36}) - 2*\frac{1}{18}log_2(\frac{1}{18}) - \\ 
+& - 2*\frac{1}{12}log_2(\frac{1}{12}) - 2*\frac{1}{9}log_2(\frac{1}{9}) - \\ 
+& - 2*\frac{5}{36}log_2(\frac{5}{36}) - \frac{1}{6}log_2(\frac{1}{6}) \approx 3.274 \text{ bits} < H(X,Y) \approx 5.169
+\end{split}
+\end{equation}
+
+\subsection*{\normalfont (d) Denote the minimum of the outcomes by W, i.e. W = min{X,Y}. Compute H(W) in 3 decimals and show that H(W) < H(X).}
+
+\subsection*{Answer: The entropy of W is:}
+
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+min X,Y & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+1 & 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
+2 & 1 & 2 & 2 & 2 & 2 & 2 \\ \hline
+3 & 1 & 2 & 3 & 3 & 3 & 3\\ \hline
+4 & 1 & 2 & 3 & 4 & 4 & 4\\ \hline
+5 & 1 & 2 & 3 & 4 & 5 & 5\\ \hline
+6 & 1 & 2 & 3 & 4 & 5 & 6\\ \hline
+\end{tabular}
+\end{adjustbox}
+\caption{Visualization of all outcomes of W} 
+\end{table}
+
+\begin{equation}
+\begin{split}
+H(W) & = -\frac{1}{36}log_2(\frac{1}{36}) - \frac{1}{12}log_2(\frac{1}{12}) - \frac{5}{36}log_2(\frac{5}{36}) - \frac{7}{36}log_2(\frac{7}{36}) - \\
+& - \frac{1}{4}log_2(\frac{1}{4}) - \frac{11}{36}log_2(\frac{11}{36}) \approx 2.319 \text{ bits} < H(X) \approx 2.584
+\end{split}
+\end{equation}
+
+\subsection*{\normalfont (e) Denote the absolute difference between the outcomes by Z, i.e. Z = |X-Y|. Compute H(Z) in 3 decimals and show that H(Z) < H(X).}
+
+\subsection*{ Answer: The entropy of Z is:}
+
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+X-Y & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+1 & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+2 & 1 & 0 & 1 & 2 & 3 & 4 \\ \hline
+3 & 2 & 1 & 0 & 1 & 2 & 3\\ \hline
+4 & 3 & 2 & 1 & 0 & 1 & 2\\ \hline
+5 & 4 & 3 & 2 & 1 & 0 & 1\\ \hline
+6 & 5 & 4 & 3 & 2 & 1 & 0\\ \hline
+\end{tabular}
+\end{adjustbox}
+\caption{Visualization of all outcomes of Z} 
+\end{table}
+
+\begin{equation}
+\begin{split}
+H(V) & = H(X+Y) = -\frac{1}{18}log_2(\frac{1}{18}) - \frac{1}{9}log_2(\frac{1}{9}) - \frac{1}{6}log_2(\frac{1}{6}) - \frac{2}{9}log_2(\frac{2}{9}) - \\ 
+& - \frac{5}{18}log_2(\frac{5}{18}) - \frac{1}{6}log_2(\frac{1}{6}) \approx 2.441 \text{ bits} < H(X) \approx 2.584
+\end{split}
+\end{equation}
+
+\section{\normalfont Let X be the outcome of a biased coin. Suppose that \(P(X = H)=p \text{ and } P(X = T)=1-p\) for certain \(p>\frac{1}{2}\). If we encode the outcomes with zeroes (for head) and ones (for tails), then we need 100 bits to encode 100 outcomes. There is however a more efficient code if we group the outcomes in pairs of two.}
+
+\subsection*{\normalfont (a) Give the corresponding Huffman code. During the construction of the binary tree, you may assume that \(1-p < p^2\).}
+
+\subsection*{Answer: The probability distribution over a pair of coin flips is a joint probability distribution over X twice.}
+
+\begin{table}[t]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{|c|c|c|}
+\hline
+X,X & H & T \\ \hline
+H & \(p^2\) & \(p(1-p)\) &  \hline
+T & \((1-p)p\) & \((1-p)^2\) & \hline
+\end{tabular}
+\end{adjustbox}
+\caption{Visualization of all outcomes of 2 coin filps} 
+\end{table}
+
+\subsection*{To generate the Huffman code for this distribution we start by connecting \((1-p)^2\) with \(p(1-p)\) since we know \(1-p<p^2 \longrightarrow p^2>p(1-p)>(1-p)^2\) after the combining we get \((1-p)^2+p(1-p)=p^2-2p+1+p-p^2 = 1-p\) comparing it to the remaining probabilities \(p^2>(1-p)>(1-p)p\) next we combine the next smallest \((1-p)+(1-p)p=1-p+p-p^2=1-p^2\) and lastly \(p^2 +1-p^2=1\) so the final Huffman code we get is 0 for \(p^2\), 10 for \((1-p)p\), 110 for \(p(1-p)\) and 111 for \((1-p)^2\).}
+
+\subsection*{\normalfont (b) Suppose that we already know that the expected number of bits to encode 100 outcomes is equal to 70 if we use this more efficient code. What can you conclude about the entropy of X?}
+
+\subsection*{Answer: The only definitive statement we can make about X is
+that its entropy is below 0.7 bits.}
+
+\subsection*{\normalfont (c) Determine p (both exactly and in 3 decimals) and the entropy of X (in 3 decimals).}
+
+\subsection*{Answer: (Assuming we are meant to use the assumptions from (b) ) the expected number of bits is 70 over 100 outcomes which means that for a single pair of outcomes, the expected bits are 1.4 so:}
+
+\begin{equation}
+\begin{split}
+E(\#bits) = 1.4 = p^2+2*(1-p)p+3*p(1-p)+3*(1-p)^2 = & \\
+= p^2+2p-2p^2+3p-3p^2+3p^2-6p+3 = -p^2-p+3 = 1.4
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+E(\#bits) = -p^2-p+1.6 = 0 & \\
+D = 1+6.4 = 7.4 & \\
+p_1 = \frac{1-\sqrt{7.4}}{-2} \approx 0.860 & \\
+p_2 = \frac{1+\sqrt{7.4}}{-2} \approx -1.860 < 0 & \\
+\Longrightarrow p = \frac{1-\sqrt{7.4}}{-2} \approx 0.860
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+H(X) = -\frac{1-\sqrt{7.4}}{-2}log_2(\frac{1-\sqrt{7.4}}{-2})- & \\ - (1-\frac{1-\sqrt{7.4}}{-2})log_2(1-\frac{1-\sqrt{7.4}}{-2}) = & \\ = 0.1869 + 0.3969 = 0.583 \text{ bits}
+\end{split}
+\end{equation}
+
+\section{Let X be a random variable with a binomial distribution with parameters n and p, i.e. the probability of the ith outcome is equal to:} 
+\begin{equation}
+P(X = i) = \binom{n}{i}p^i(1-p)^{n-i}    
+\end{equation}
+\section*{Show that the entropy of X is given by:} 
+\begin{equation}
+H(X)=-n(plog_2(p) + (1-p)log_2(1-p))    
+\end{equation}
+
+\subsection*{Answer: The Binomial distribution is defined as the joint probability distribution of n independent Bernoulli distributions and because the Bernoulli distributions are independent of one another then the associativity property of Entropy holds for joint probability distributions}
+
+\begin{equation}
+\begin{split}
+Y & = (p,(1-p))  \\
+H(X) & = \underbrace{H(Y) + H(Y) + .... + H(Y)}_\text{n times}
+\end{split}
+\end{equation}
+
+\subsection*{But we already know the entropy of the Bernoulli distribution}
+
+\begin{equation}
+\begin{split}
+H(Y) & =  -(plog_2(p) + (1-p)log_2(1-p))  \\
+\end{split}
+\end{equation}
+
+\subsection*{so the formula for the Binomial distribution would be:}
+
+\begin{equation}
+\begin{split}
+H(X) & = \underbrace{H(Y) + H(Y) + .... + H(Y)}_\text{n times} \\
+H(X) & = n*H(Y) \\
+H(X) & = -n(plog_2(p) + (1-p)log_2(1-p))
+\end{split}
+\end{equation}
+
+\section{Suppose X is a continuous random variable with an exponential probability distribution. Then X has a probability density function given by}
+\begin{equation}
+f(x) = \frac{1}{\lambda}e^{-\frac{x}{\lambda}} \text{ for } x \geq 0
+\end{equation}
+\section*{Show that the entropy of X is equal to}
+\begin{equation}
+H(X) = log_2(\lambda e)
+\end{equation}
+
+\subsection*{Answer: The entropy is:}
+
+\begin{equation}
+\begin{split}
+H(X) & = -\int \frac{1}{\lambda}e^{-\frac{x}{\lambda}}log_2(\frac{1}{\lambda}e^{-\frac{x}{\lambda}}) dx = \\
+& = e^{-\frac{x}{\lambda}} log_2(\frac{1}{\lambda}e^{-\frac{x}{\lambda}})  - \frac{1}{\lambda ln(2)}\int -e^{-\frac{x}{\lambda}} dx = \\
+& = e^{-\frac{x}{\lambda}} log_2(\frac{1}{\lambda}e^{-\frac{x}{\lambda}}) - \frac{\lambda e^{-\frac{x}{\lambda}}}{\lambda ln(2)} + C = \\
+& = \frac{e^{-\frac{x}{\lambda}}(ln(\frac{e^{-\frac{x}{\lambda}}}{\lambda}) - 1)}{ln(2)} + C = \\ 
+& = \frac{e^{-\frac{x}{\lambda}}(ln(\frac{e^{-\frac{x}{\lambda}}}{\lambda}) - ln(e))}{ln(2)} = \\ 
+& = \frac{e^{-\frac{x}{\lambda}}ln(\frac{e^{-\frac{x}{\lambda}}}{\lambda e})}{ln(2)} = \\ 
+& = e^{-\frac{x}{\lambda}}log_2(\frac{e^{-\frac{x}{\lambda}}}{\lambda e}) =\\ 
+& = e^{-\frac{x}{\lambda}}log_2(e^{-\frac{x}{\lambda}}) - e^{-\frac{x}{\lambda}}log_2(\lambda e) =\\ 
+& = \underbrace{e^{-\frac{x}{\lambda}}log_2(e^{-\frac{x}{\lambda}}) - (e^{-\frac{x}{\lambda}} + 1)log_2(\lambda e)}_\text{somehow supposed to be 0} + log_2(\lambda e)= \text{ idk}
+\end{split}
+\end{equation}
+\end{document}
+x

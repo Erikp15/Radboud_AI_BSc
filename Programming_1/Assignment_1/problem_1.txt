@@ -1,0 +1,13 @@
+int;
+float;
+str;
+str;
+int;
+str;
+str;
+int;
+int;
+float;
+error;
+float;
+error;

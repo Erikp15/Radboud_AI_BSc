@@ -1,0 +1,5 @@
+print("What year is it?")
+current_year = input()
+print("What is your birth year?")
+birth_year = input()
+print("Age is " + str(int(current_year)-int(birth_year)))

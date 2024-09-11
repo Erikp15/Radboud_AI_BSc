@@ -1,0 +1,13 @@
+int; 6;
+int; 7;
+float; 4.0;
+str; "Who are you?A programmer!";
+float; 13.0;
+float; 3.0;
+str; "Hello! You are almost there.. How are you doing?";
+int; 3;
+int; 2;
+int; 8;
+error;
+int; 6;
+int; 26;

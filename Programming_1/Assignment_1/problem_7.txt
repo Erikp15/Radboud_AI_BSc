@@ -1,0 +1,7 @@
+1. A variable is an object stored in memory that contains information in the form numbers, letters, etc. 
+that can be manipulated to our liking.
+2. Dynamic typing is a characteristic of different programming languages that conserns whether or not you need to explicitly define a type for each variable and stick to it (Static typing) in all operations using this variable or let the compiler dynamicly switch the variable type based on its current value.
+3. Static typing would force you to explicitly define the type for each variable you create example: "var1 = 1.0 vs float var1 = 1.0".
+4. Typecasting is an function that takes as input an expression and converts its output to the designated type: example: 
+var = "2055"
+print(int(var) - 10)
