@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Calculus Assignment 6}
+\author{Erik Paskalev}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{\normalfont Convert the following angles measured in degrees into radians: }
+
+\begin{equation}
+\begin{split}
+{90}^{\circ} & = \frac{\pi}{2} \text{ radians} \\
+{45}^{\circ} & = \frac{\pi}{4} \text{ radians} \\
+{180}^{\circ} & = \pi \text{ radians} \\
+{270}^{\circ} & = \frac{3\pi}{2} \text{ radians} \\
+\end{split}
+\end{equation}
+
+\section{\normalfont Find the value of $sin(\frac{\pi}{4})$ using the geometric definition.}
+
+\section*{Answer: The geometric definition is that $sin(x)$ equals the length of the side of the triangle adjacent to angle, assuming the triangle is defined in the unit circle.}
+\begin{equation}
+\begin{split}
+& \frac{\pi}{4} = {45}^{\circ} \\
+& \text{length of sides of triangle with degrees (45,90,45) } = (\frac{\sqrt{2}}{2}, 1, \frac{\sqrt{2}}{2}) \\ 
+& \text{meaning } sin(\frac{\pi}{2}) = \frac{\sqrt{2}}{2} 
+\end{split}
+\end{equation}
+
+\section{\normalfont The tangent function is defined as:}
+
+\begin{equation}
+tan(t) = \frac{sin(t)}{cos(t)}
+\end{equation}
+
+\section*{Compute the derivative of the tangent function.}
+
+\section*{Answer: }
+
+\begin{equation}
+\begin{split}
+tan'(t) & = (\frac{sin(t)}{cos(t)})' = \frac{sin'(t)cos(t) - sin(t)cos'(t)}{(cos(t))^2} = \\ 
+& =\frac{(cos(t))^2 + (sin(t))^2}{(cos(t))^2} = \frac{1}{(cos(t))^2}
+\end{split}
+\end{equation}
+
+\section{\normalfont Find the antiderivative of the following functions.}
+
+\begin{equation}
+\begin{split}
+& x(t) = 3t^2 + 5t \\
+& \int x(t) dt = \int 3t^2 + 5t dt = t^3 + \frac{5t^2}{2} + C \\ \\
+& x(t) = 6t + 1 \\
+& \int x(t) dt = \int 6t + 1 dt = 3t^2 + t + C \\ \\
+& x(t) = t^4 + t^3 + t^2 \\
+& \int x(t) dt = \int t^4 + t^3 + t^2 dt = \frac{t^5}{5} + \frac{t^4}{4} + \frac{t^3}{3} + C \\ \\
+& x(t) = e^{2t} \\
+& \int x(t) dt = \int e^{2t} dt = \frac{e^{2t}}{2} + C \\ \\
+& x(t) = e^{2t} \\
+& \int x(t) dt = \int 4^t dt = \frac{4^t}{ln(4)} + C \\ \\
+& x(t) = 4^t \\
+& \int x(t) dt = \int 4^t dt = \frac{4^t}{ln(4)} + C \\ \\
+& x(t) = cos(3t) \\
+& \int x(t) dt = \int cos(3t) dt = \frac{sin(3t)}{3} + C \\ \\
+& x(t) = 3sin(2t) + 1 \\
+& \int x(t) dt = \int 3sin(2t) + 1 dt = \frac{-3cos(2t)}{3} + t + C \\ \\
+\end{split}
+\end{equation}
+
+\section{\normalfont The velocity of a car is given by the function:}
+
+\begin{equation}
+x(t) = t^3 + 1
+\end{equation}
+
+\section*{\normalfont Find the position $x(t)$ of the car at time t given that $x(0) = 2$.}
+
+\section*{Answer:}
+
+\begin{equation}
+x(t) = x(0) + {\int_{0}}^t x'(t) dt = 2 + {\int_{0}}^t t^3 dt = 2 + \frac{t^4}{4} - 0 = \frac{t^4}{4} + 2
+\end{equation}
+
+\section{\normalfont Find the area under the function}
+
+\begin{equation}
+x(t) = t^2 + t^4
+\end{equation}
+
+\section*{\normalfont from $t=0$ to $t=1$.}
+
+\begin{equation}
+\begin{split}
+{\int_0}^1 x(t) dt = {\int_0}^1 t^4 + t^2 dt = \frac{1^5}{5} + \frac{1^3}{3} + C - 0 - C = \frac{1}{5} + \frac{1}{3} = \frac{8}{15}
+\end{split}
+\end{equation}
+
+\section{\normalfont Solve the following integrals:}
+
+\begin{equation}
+\begin{split}
+{\int_{-1}}^1 (5t^6 - 7t^2) dt & = \frac{5(1)^7}{7} - \frac{7(1)^3}{3} + C - \frac{5(-1)^7}{7} - \frac{7(-1)^3}{3} + C = \\ 
+& = \frac{10}{7} - \frac{14}{3} = -\frac{68}{21} \\ \\
+{\int_0}^2 (e^{4t} + t) dt & = \frac{e^8}{4} + 2 + C - \frac{e^0}{4} - 0 - C = \frac{e^8}{4} + \frac{7}{4} \\ \\
+{\int_0}^{\frac{\pi}{3}} sin(3t) dt & = -\frac{cos(\pi)}{3} + C + \frac{cos(0)}{3} - C = -\frac{-1}{3} + \frac{1}{3} = \frac{2}{3}
+\end{split}
+\end{equation}
+\end{document}

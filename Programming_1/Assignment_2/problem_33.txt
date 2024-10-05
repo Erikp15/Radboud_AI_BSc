@@ -1,0 +1,7 @@
+1. A for loop is designed with the intent of doing something whilst iterating over a finite object like an array, list, etc. A while loop is meant to be used
+when we want to continueusly do something given a specific condition.
+
+2. it looks for it in the local namespace.
+
+3. As long as both varables are not accessable in the same namespace the name doesn't matter. The compiler will look at the local namespace
+when determining what variable is being referenced. 

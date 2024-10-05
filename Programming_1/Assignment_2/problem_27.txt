@@ -1,0 +1,14 @@
+1. Both of these keywords are used inside loops. Continue skips all of the remaining lines in the current loop iteration and 
+directly skips to the end of the current iteration. Break completly exits the current most inward loop we are in.
+
+2. Write a program that generates a random number between 1 and 100, and ask the user to guess the number. After each guess give higher
+or lower depending of the guess. When the user guesses correctly print the number of guesses needed. This is an example where Break
+would be useful for stopping when the user has guesses correctly.
+Continue is used in situations where if some condition were satisfied we should skip the next step i.e. print the sum of the first
+n prime number. Usually in most of the scenario we could just use an all encapsulating if, but that can add more indentations making
+the code more unreadable.
+
+3. using the loop in calculator_loop.py as an example the for loop always starts by initializing the local variables defined.
+In this case that would be i and its value is initialized as the value of a pointer pointing at the start of range(10) which is 0.
+then the actual body of the loop is executed. after the body has been executed the pointer is moved by one changing the value of i to 1
+and the process is repeated until pointer reaches the end of the object in this case i=9 and then the loop breaks.

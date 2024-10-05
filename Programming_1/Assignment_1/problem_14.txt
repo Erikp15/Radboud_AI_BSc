@@ -1,0 +1,16 @@
+1. The boolean type is a useful because binary logic operation are used everywhere, 
+meaning they show up frequently and if we use integers for every instance we would be wasting a lot of memory,
+since usually integers are 32-bits of memory and we only need 1. 
+So as a result the boolean type exists so that we can store binary outcomes efficiently
+
+2. When executing logic operations the priority is everything in brackets is done first, then the not operator then from left to right.
+Example: 
+    "A and B or not (C and D) and not E"
+
+First we evaluate whether the result of the brackets "(C and D)" is True.
+
+Second we apply the "not" and invert the values of "(C and D)" and "E".
+
+Third we apply operation from left to right meaning computing "A and B", 
+then taking that result and computing "A and B" or "not (C and D)",
+then taking that result and computing "A and B or not (C and D)" and "not E"

@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Calculus Assignment 5}
+\author{Erik Paskalev}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{\normalfont Compute the following derivatives using the chain rule:}
+
+\section*{Answer:}
+
+\begin{equation}
+\begin{split}
+& z(t) = e^{-\frac{t^2}{2}} \\
+& z'(t) = -te^{-\frac{t^2}{2}} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& z(t) = -{(1-e^t)}^2 \\
+& z'(t) = 2(1-e^t)e^t \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& z(t) = e^{e^t} \\
+& z'(t) = e^{e^t}e^t \\
+\end{split}
+\end{equation}
+
+\section{\normalfont Consider the function $z(t) = 1/x(t)$. Using the chain rule, prove that:}
+
+\begin{equation}
+z'(t) = (\frac{1}{x(t)})' = -\frac{x'(t)}{{(x(t))}^2}
+\end{equation}
+
+\section*{Proof:}
+
+\begin{equation}
+\begin{split}
+& z(t) = \frac{1}{x(t)} \\
+& z'(t) = (\frac{1}{x(t)})' = ((x(t))^{-1})' = -(x(t))^{-2}*x'(t) = -\frac{x'(t)}{(x(t))^2} \\
+\end{split}
+\end{equation}
+
+\section{\normalfont Using the result of the previous problem, derive the formula for the derivative of the ratio of two functions:}
+
+\begin{equation}
+z'(t) = (\frac{x(t)}{y(t)})' = \frac{x'(t)y(t) - x(t)y'(t)}{(y(t))^2}
+\end{equation}
+
+\section*{\normalfont assuming $y(t)$ is not equal to zero}
+
+\section*{Proof:}
+
+\begin{equation}
+\begin{split}
+z'(t) & = (\frac{x(t)}{y(t)})' = (x(t)\frac{1}{y(t))})' = x'(t)\frac{1}{y(t)} + x(t)(\frac{1}{y(t)})' = \\ 
+& = \frac{x'(t)}{y(t)} - x(t)\frac{y'(t)}{(y(t))^2} = \frac{x'(t)y(t)}{(y(t))^2} - \frac{x(t)y'(t)}{(y(t))^2} = \frac{x'(t)y(t) - x(t)y'(t)}{(y(t))^2}
+\end{split}
+\end{equation}
+
+\section{\normalfont Compute the derivative of the following functions:}
+
+\begin{equation}
+\begin{split}
+& z(t) = \frac{e^t}{t^2} \\
+& z'(t) = \frac{t^2e^t - 2te^t}{t^4} = \frac{(t - 2)e^t}{t^3}
+\end{split}    
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& z(t) = \frac{ln(t+2)}{e^t} \\
+& z'(t) = \frac{\frac{e^t}{t+2} - ln(t+2)e^t}{e^{2t}} = \frac{1-(t+2)ln(t+2)}{(t+2)e^t}
+\end{split}    
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& z(t) = \frac{3^{-t^2}}{(1+t^2)} \\
+& z'(t) = \frac{-2ln(3)t3^{-t^2}(1+t^2) - 2t3^{-t^2}}{(1+t^2)^2} = \frac{-2(t^2ln(3) + ln(3) + 1)3^{-t^2}t}{(1+t^2)^2}
+\end{split}    
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& z(t) = \frac{e^t}{(1+e^t)} \\
+& z'(t) = \frac{(1+e^t)e^t - e^te^t}{(1+e^t)^2} = \frac{e^t}{(e^t+1)^2}
+\end{split}    
+\end{equation}
+
+\section{\normalfont Using the chain rule twice, show that:}
+
+\begin{equation}
+(z \circ y \circ x)'(t) = z'(y(x(y)))*y'(x(t))*x'(t)
+\end{equation}
+
+\section*{Proof:}
+
+\begin{equation}
+(z \circ y \circ x)'(t) = (z(y(x(t))))' = z'(y(x(t)))*(y(x(t)))' = z'(y(x(t)))*y'(x(t))*x'(t)
+\end{equation}
+
+\section{Compute the derivatives of the following functions:}
+
+\begin{equation}
+\begin{split}
+& z(t) = ln({(e^t + 2)}^2) \\ 
+& z'(t) = \frac{1}{{(e^t + 2)^2}}*2(e^t + 2)*e^t = \frac{2e^t}{e^t + 2}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+z(t) & = \frac{1}{{(e^{t^3+t} + 3t)}^3} \\
+z'(t) & = -3\frac{1}{(e^{t^3 + t} + 3t)^4}*((3t^2 + 1)e^{t^3 + t} + 3t)' = \\ & = -3\frac{(3t^2 + 1)e^{t^3 + t} + 3}{(e^{t^3 + t} + 3t)^4} \\
+\end{split}
+\end{equation}
+
+
+
+\section{\normalfont Compute all the partial derivatives of the following functions:}
+
+\begin{equation}
+\begin{split}
+& f(x,y) = xe^{xy} \\
+& \frac{\partial f}{\partial x} = (xy + 1)e^{xy} \\
+& \frac{\partial f}{\partial y} = x^2e^{xy} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& f(x,y,z) = x^3 - y^2 + 3z\\
+& \frac{\partial f}{\partial x} = 3x^2 \\
+& \frac{\partial f}{\partial y} = 2y \\
+& \frac{\partial f}{\partial z} = 3 \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+& f(x,y) = x^y \\
+& \frac{\partial f}{\partial x} = yx^{y-1}\\
+& \frac{\partial f}{\partial y} = ln(x)x^y \\
+\end{split}
+\end{equation}
+
+
+
+\section{\normalfont Consider an artificial neuron with two inputs:}
+
+\begin{equation}
+f(x_1,x_2) = \sigma(w_1x_1 + w_2x_2)
+\end{equation}
+
+\section*{\normalfont Part I: Write down a loss function to train the neuron to give a value of $\frac{1}{3}$ when $x_1 = \frac{1}{2}$ and $x_2 = -3$.}
+
+\begin{equation}
+L(w_1,w_2) = ?
+\end{equation}
+
+\section*{Answer: If we want to find a loss function that satisfies the constraint the only requirement is that when:}
+
+\begin{equation}
+\begin{split}
+& f(\frac{1}{2},-3) = \frac{1}{3} \longrightarrow L(w_1,w_2) = 0. \\
+& L(w_1,w_2) + \frac{1}{3} = \frac{1}{3} \\
+& L(w_1,w_2) + \frac{1}{3} = f(\frac{1}{2},-3) \\
+& L(w_1,w_2) = f(\frac{1}{2},-3) - \frac{1}{3} = \sigma(\frac{w_1}{2} - 3w_2) - \frac{1}{3}
+\end{split}
+\end{equation}
+
+\section*{To complete the loss we square it and divide by half:}
+
+\begin{equation}
+L(w_1,w_2) = \frac{1}{2}(\sigma(\frac{w_1}{2} - 3w_2) - \frac{1}{3})^2
+\end{equation}
+
+\section*{\normalfont Part II: Compute the partial derivatives of this loss function with respect to the weights.}
+
+\begin{equation}
+\begin{split}
+\frac{\partial L}{\partial w_1} & = (\sigma (\frac{w_1}{2} - 3w_2) - \frac{1}{3})*\sigma'(\frac{w_1}{2} - 3w_2)*\frac{1}{2} \\ 
+\frac{\partial L}{\partial w_2} & = (\sigma (\frac{w_1}{2} - 3w_2) - \frac{1}{3})*\sigma'(\frac{w_1}{2} - 3w_2)*(-3) \\ 
+\end{split}
+\end{equation}
+
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass[11px]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+
+\title{Intro AI Assignment 1}
+\author{Erik Paskalev }
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{\normalfont Consider the tree with numbered nodes in figure 3.2. Nodes at the same level are processed left to right and the starting node is 0.}
+
+\subsection{\normalfont Write out a step-by-step application of depth-first search to this tree. Show, per step, what the frontier is using the notation in Table 1.}
+
+\begin{table}[h]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{c|c|c|}
+
+  Step\#  & Frontier\{DFS\} & Frontier\{BFS\} \\ \hline
+     1 & \{0\} & \{0\} \\
+     2 & \{1,2,3\} & \{1,2,3\} \\
+     3 & \{4,5,2,3\} & \{2,3,4,5\} \\
+     4 & \{10,5,2,3\} & \{3,4,5,6\} \\
+     5 & \{5,2,3\} & \{4,5,6,7,8,9\} \\
+     6 & \{1,12,2,3\} & \{5,6,7,8,9,10\} \\
+     7 & \{20,21,12,2,3\} & \{6,7,8,9,10,11,12\} \\
+     8 & \{21,12,2,3\} & \{7,8,9,10,11,12,13,14\} \\
+     9 & \{12,2,3\} & \{8,9,10,11,12,13,14,15,16\} \\
+     10 & \{2,3\} & \{9,10,11,12,13,14,15,16,17\} \\
+     11 & \{6,3\} & \{10,11,12,13,14,15,16,17,18,19\} \\
+     12 & \{13,14,3\} & \{11,12,13,14,15,16,17,18,19\} \\
+     13 & \{22,14,3\} & \{12,13,14,15,16,17,18,19,20,21\} \\
+     14 & \{14,3\} & \{13,14,15,16,17,18,19,20,21\} \\
+     15 & \{3\} & \{14,15,16,17,18,19,20,21,22\} \\
+     16 & \{7,8,9\} & \{15,16,17,18,19,20,21,22\} \\
+     17 & \{15,16,8,9\} & \{16,17,18,19,20,21,22,23,24,25\} \\
+     18 & \{23,24,25,16,8,9\} & \{17,18,19,20,21,22,23,24,25,26\} \\
+     19 & \{24,25,16,8,9\} & \{18,19,20,21,22,23,24,25,26,27,28\} \\
+     20 & \{25,16,8,9\} & \{19,20,21,22,23,24,25,26,27,28,29\} \\
+     21 & \{16,8,9\} & \{20,21,22,23,24,25,26,27,28,29\} \\
+     22 & \{26,8,9\} & \{21,22,23,24,25,26,27,28,29\} \\
+     23 & \{8,9\} & \{22,23,24,25,26,27,28,29\} \\
+     24 & \{17,9\} & \{23,24,25,26,27,28,29\} \\
+     25 & \{27,28,9\} & \{24,25,26,27,28,29\} \\
+     26 & \{28,9\} & \{25,26,27,28,29\} \\
+     27 & \{9\} & \{26,27,28,29\} \\
+     28 & \{18,19\} & \{27,28,29\} \\
+     29 & \{29,19\} & \{28,29\} \\
+     30 & \{19\} & \{29\} \\
+     31 & \{\} & \{\} \\
+     
+\end{tabular}
+\end{adjustbox}
+\caption{Frontier of both BFS and DFS at each depth.} 
+\end{table}
+
+\subsection{\normalfont Write down how many search steps are needed to find node 19. Write down how many are needed to find node 24.}
+
+\subsection*{Answer: for DFS total search steps to find 19 is 31. For 24 is 20 steps}
+
+\subsection{\normalfont Redo exercise 1a and 1b using breadth-first search.
+Table 1: Search notation including frontier 10}
+
+\subsection*{Answer: for BFS, the total search steps to find 19 is 21. For 24 is 25 steps}
+
+\section{\normalfont See the graph in figure 3.3, indicating travel distances between some major places in the Netherlands. Assume one wants to plan their trip from Utrecht (Ut) to Ljouwert (Leeuwarden - Lj) using this graph below using the A* algorithm, with the following (admissible and consistent) heuristic: h(Ar) = 54, h(As) = 22, h(DB) = 68, h(DH) = 64, h(Gr) = 20, h(Ha) = 48, h(Le) = 32, h(Lj) = 0, h(Ma) = 104, h(Mi) = 96, h(Ut) = 52, h(Zw) = 32. Work out this example step by step, showing the frontier for each step (as in exercise 1), including the value you use for ordering the nodes in the frontier.}
+
+\begin{table}[h]
+\centering
+\begin{adjustbox}{width=0.5\linewidth}
+\begin{tabular}{c|c|c|}
+
+  Step\#  & Frontier\{A*\} & Frontier cost \\ \hline
+     1 & \{Ut\} & \{52\} \\
+     2 & \{Zw,Ar,DB,Le,Ha,DH\} & \{83,89,95,97,99,106\} \\
+     3 & \{Ar,DB,Le,Ha,DH,Lj,As\} & \{89,95,97,99,106,139,145\} \\
+     4 & \{DB,Le,Ha,DH,Lj,As,Ma\} & \{95,97,99,106,139,145,323\} \\
+     5 & \{Le,Ha,DH,Lj,As,Mi,Ma\} & \{97,99,106,139,145,299,323\} \\
+     6 & \{Ha,DH,Lj,As,Mi,Ma\} & \{99,106,139,145,299,323\} \\
+     7 & \{DH,Lj,As,Mi,Ma\} & \{106,139,145,299,323\} \\
+     8 & \{Lj,As,Mi,Ma\} & \{139,145,299,323\} \\
+     9 & \{As,Mi,Ma\} & \{145,299,323\} \\
+     
+\end{tabular}
+\end{adjustbox}
+\caption{Frontier of A* until Lj is found.} 
+\end{table}
+
+\end{document}

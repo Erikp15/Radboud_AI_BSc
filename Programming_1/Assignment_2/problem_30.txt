@@ -1,0 +1,6 @@
+Global;warning_msg,a,b,;
+Local (check-balance);amount,balance,valid;
+Local (transfer_x);x,sender,receiver,valid_transaction;
+print #1;warning_msg,a,b,amount,balance,valid;
+print #2;warning_msg,a,b,x,sender,receiver,valid_transaction;
+print #3;warning_msg,a,b;

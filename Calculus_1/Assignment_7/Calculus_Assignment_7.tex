@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Calculus Assignment 7}
+\author{Erik Paskalev}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{\normalfont Solve the following integrals using integration by parts:}
+
+\begin{equation}
+\begin{split}
+{\int_0}^1 te^{2t} dt & = \mathlarger{[}\frac{t^2e^{2t}}{2} - \frac{1}{2}\int e^{2t} dt\mathlarger{]}_0^1 = \frac{1e^2}{2} - \frac{e^2}{4} + C - \frac{0e^0}{2} + \frac{e^0}{4} + C = \frac{e^2 + 1}{4} \\ \\
+{\int_{-1}}^1 t^2e^t dt & = \mathlarger{[}t^2e^t - \int 2te^t dt \mathlarger{]}_0^1 = \mathlarger{[}t^2e^t - 2te^t + 2e^t\mathlarger{]}_0^1 = \\ 
+& = e - 2e + 2e + C - (\frac{1}{e} + \frac{2}{e} + \frac{2}{e} + C) = \frac{e^2 - 5}{e} \\ \\
+{\int_0}^{\pi} tcos(t) dt & = \mathlarger{[}tsin(t) - \int sin(t) dt \mathlarger{]}_0^1 = \\ 
+& = \pi sin(\pi) + cos(\pi) + C - 0sin(0) - cos(0) - C = -1 - 1 = -2
+\end{split}    
+\end{equation}
+
+\section{\normalfont Compute the following integral using integration by parts:}
+
+\begin{equation}
+\begin{split}
+{\int_1}^2 ln(t) dt & = {\int_1}^2 1*ln(t) dt = \mathlarger{[} tln(t) - \int \frac{t}{t} dt \mathlarger{]}_1^2 = \\ 
+& = 2ln(2) - 2 + C - ln(1) + 1 - C = 2ln(2) - 1
+\end{split}
+\end{equation}
+
+\section{\normalfont Solve the following integrals using integration by parts:}
+
+\begin{equation}
+\begin{split}
+{\int_0}^1 te^{\frac{t^2}{2}} dt & = {\int_0}^{\frac{1}{2}} e^{\frac{t^2}{2}} d(\frac{t^2}{2}) = \mathlarger{[} e^{\frac{t^2}{2}} + C \mathlarger{]}_0^1 = e^{\frac{1}{2}} - 1 \\ \\
+{\int_0}^{\frac{\pi}{2}} e^{cost(t)}sin(t) dt & = {\int_0}^{\frac{\pi}{2}} -e^{cost(t)} (-sin(t))dt = {\int_0}^{\frac{\pi}{2}} -e^{cost(t)} d(cos(t)) = \\
+& = \mathlarger{[} -e^{cos(t)} \mathlarger{]}_0^{\frac{\pi}{2}} = -1 + C + e - C = e - 1
+\end{split}
+\end{equation}
+
+
+
+\end{document}

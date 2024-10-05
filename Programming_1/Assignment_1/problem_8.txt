@@ -1,0 +1,14 @@
+int; 8;
+int; 3;
+int; 10;
+bool; False;
+bool; True;
+bool; False;
+float; 3.3333333333;
+bool; False;
+bool; True;
+str; "23";
+bool; True;
+float; 23.0;
+bool; True;
+int; 8;
