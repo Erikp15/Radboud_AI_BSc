@@ -1,0 +1,3 @@
+Are the current state of the art image generation models creative.
+Creative definition - the ability to produce something original.
+Original definition - not derived from something else

@@ -1,12 +1,12 @@
-from heuristics import Heuristic, SimpleHeuristic
+from heuristics import Heuristic, ParityHeuristic, SimpleHeuristic, NoHeuristic
 from players import PlayerController, HumanPlayer, MinMaxPlayer, AlphaBetaPlayer
 from board import Board
 from typing import List
 import numpy as np
-from numba import jit, int32
+from numba import jit
+import copy
 
-
-def start_game(game_n: int, max_depth: int, board: Board, players: List[PlayerController]) -> int:
+def start_game(game_n: int, board: Board, players: List[PlayerController]) -> int:
     """Starting a game and handling the game logic
 
     Args:
@@ -20,20 +20,19 @@ def start_game(game_n: int, max_depth: int, board: Board, players: List[PlayerCo
     print('Start game!')
     current_player_index: int = 0 # index of the current player in the players list
     winner: int = 0
-
+    num_of_moves = 0
+    Game_states: board = []
     # Main game loop
     while winner == 0:
         current_player: PlayerController = players[current_player_index]
         move: int = current_player.make_move(board)
-
         while not board.play(move, current_player.player_id):
             move = current_player.make_move(board)
-
+        num_of_moves += 1
         current_player_index = 1 - current_player_index
+        print(board)
+        Game_states.append(copy.deepcopy(board))
         winner = winning(board.get_board_state(), game_n)
-
-    # Printing out winner, final board and number of evaluations after the game 
-    print(board)
 
     if winner < 0:
         print('Game is a draw!')
@@ -41,7 +40,7 @@ def start_game(game_n: int, max_depth: int, board: Board, players: List[PlayerCo
         print(f'Player {current_player} won!')
 
     for p in players:
-        print(f'Player {p} evaluated a boardstate {p.get_eval_count()} times!')
+        print(f'Player {p} evaluated on average {p.get_eval_count()/num_of_moves} board states per move!')
 
     return winner
 
@@ -136,11 +135,11 @@ def get_players(game_n: int) -> List[PlayerController]:
     Returns:
         List[PlayerController]: list with two players
     """
-    heuristic1: Heuristic = SimpleHeuristic(game_n)
-    heuristic2: Heuristic = SimpleHeuristic(game_n)
+    heuristic1: Heuristic = NoHeuristic(game_n)
+    heuristic2: Heuristic = NoHeuristic(game_n)
 
-    human1: PlayerController = MinMaxPlayer(1, game_n, max_depth, heuristic1)
-    human2: PlayerController = MinMaxPlayer(2, game_n, max_depth, heuristic2)
+    human1: PlayerController = MinMaxPlayer(1, game_n, depth_1, heuristic1)
+    human2: PlayerController = AlphaBetaPlayer(2, game_n, depth_2, heuristic2)
 
     # TODO: Implement other PlayerControllers (MinMaxPlayer and AlphaBetaPlayer)
 
@@ -159,10 +158,16 @@ if __name__ == '__main__':
     game_n: int = 4 # n in a row required to win
     width: int = 7  # width of the board
     height: int = 6 # height of the board
-    max_depth: int = 5 # maximum depth of the Minimax search
-
+    depth_1: int = 5 # maximum depth of player 1 search
+    depth_2: int = 5 # maximum depth of player 2 search
     # Check whether the game_n is possible
+    print("Input board width:")
+    width = int(input())
+    print("Input board height:")
+    height = int(input())    
+    print("Input number of moves to win:")
+    game_n = int(input())
     assert 1 < game_n <= min(width, height), 'game_n is not possible'
 
     board: Board = Board(width, height)
-    start_game(game_n, max_depth, board, get_players(game_n))
+    start_game(game_n, board, get_players(game_n))

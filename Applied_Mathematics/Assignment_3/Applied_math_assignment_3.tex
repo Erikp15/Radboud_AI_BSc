@@ -1,0 +1,151 @@
+\documentclass[15px]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{newpxtext} 
+\usepackage{relsize}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{stackengine} 
+\usepackage{adjustbox}
+\usepackage{mathtools}
+\stackMath
+
+\title{Applied math assignment 3}
+\author{Erik Paskalev}
+\date{October 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 5.2. \normalfont Solve the following equations in C:}
+
+\section*{\normalfont (b)  $\frac{1}{2}x^3 + 4x = 2x^2$.}
+
+\begin{equation}
+\begin{split}
+\frac{1}{2}x^3 - 2x^2 + 4x & = 0 \\
+x(x^2 - 4x + 8) & = 0 \\
+D = 4 - 8 & = -4 \\
+x_1 = 2 + \sqrt{-4} = 2 + \sqrt{4*-1} & = 2 + 2\sqrt{-1} = 2 + 2i \\
+x_2 = 2 - \sqrt{-4} & = 2 - 2i \\
+x(2 + 2i)(2 - 2i) & = 0 \\
+x_1 & = 2 + 2i \\
+x_2 & = 2 - 2i \\
+x_3 & = 0
+\end{split}
+\end{equation}
+
+\section*{Exercise 5.8. \normalfont Let $z = -4 + 2i$ and $w = 3 - i$. Compute the following:}
+
+\section*{\normalfont (a)  $\frac{w}{z}$.}
+
+\begin{equation}
+\begin{split}
+I(\frac{w}{z}) & = I(\frac{3 - i}{-4 + 2i}) \\
+& = I(\frac{3 - i}{-4 + 2i} \frac{-4 - 2i}{-4 - 2i}) \\
+& = I(\frac{(-4 - 2i)(3 - i)}{20}) \\
+& = I(\frac{-12 - 2 - (6 - 4)i}{20}) \\
+& = I(-\frac{7}{10} -\frac{1}{10}i) \\ 
+& = -\frac{1}{10}
+\end{split}
+\end{equation}
+
+\section*{Exercise 6.2. \normalfont Write the following complex numbers in Cartesian form.}
+
+\section*{\normalfont (d)  $z = cos(\pi + i)$.}
+
+\begin{equation}
+\begin{split}
+z = cos(\pi + i) & = cos(\pi)cos(i) - sin(\pi)sin(i) \\
+& = -cos(i) - 0*sin(i) = -cos(i) \\
+& = -\frac{e^{i*i} + e^{-i*i}}{2} \\
+& = -\frac{e^{-1} + e}{2} \\
+\end{split}
+\end{equation}
+
+\section*{Exercise 6.17. \normalfont Prove the double-angle formulas using the formula of de Moivre.}
+
+\section*{Proof:}
+
+\begin{equation}
+\begin{split}
+z & := r(cos(a) + sin(a)i)\\
+z^2 = r(cos(a) + sin(a)i)^2 & = r(cos(2a) + sin(2a)i) \\
+(cos(a) + sin(a)i)^2 & = cos(2a) + sin(2a)i \\
+cos^2(a) - sin^2(a) + 2cos(a)sin(a)i & = cos(2a) + sin(2a)i \\
+cos^2(a) - sin^2(a) & = cos(2a) \\
+2cos(a)sin(a) & = sin(2a) \\
+\end{split}
+\end{equation}
+
+\section*{Exercise 7.4. \normalfont Given the function $f(t) = R((1 - i)e^{\pi ti})$, with $t \in \mathbb{R}$.}
+
+\section*{\normalfont (a) Show that $f(t)$ is a real sinusoid by converting it into standard form $f(t) = Acos(\omega t + \phi)$}
+
+\section*{Answer: }
+
+\begin{equation}
+\begin{split}
+R((1 - i)e^{\pi ti}) & = R(\sqrt{2}(cos(-\frac{\pi}{4}) + sin(-\frac{\pi}{4})i) e^{\pi ti}) = R(\sqrt{2} e^{-\frac{\pi}{4}i} e^{\pi ti}) = \\ 
+& = R(\sqrt{2} e^{(\pi t - \frac{\pi}{4})i}) = \sqrt{2}cos(\pi t - \frac{\pi}{4})
+\end{split}
+\end{equation}
+
+\section*{\normalfont (b) Write $f(t)$ as a sum of two complex exponential signals, i.e. determine $A_1, A_2, \omega_1, \omega_2, \phi_1, \phi_2$
+such that}
+
+\begin{equation}
+f(t) = A_1e^{(\omega_1t + \phi_1)i} + A_2e^{(\omega_2t + \phi_2)i}
+\end{equation}
+
+\section*{Answer: }
+
+\begin{equation}
+\begin{split}
+f(t) & = R((1 - i)e^{\pi ti}) = R(e^{\pi ti} - e^{\pi ti}i) = \\
+& = R(cos(\pi t) + sin(\pi t)i + sin(\pi t) - cos(\pi t)i) = \\
+& = cos(\pi t) + sin(\pi t) = cos(\pi t) + cos(\pi t - \frac{\pi}{2})
+\end{split}
+\end{equation}
+
+\section*{\normalfont (c) Solve the equation $f(t) = 0$. Give all real solutions.}
+
+\section*{Answer: }
+
+\begin{equation}
+\begin{split}
+f(t) = \sqrt{2}cos(\pi t - \frac{\pi}{4}) & = 0 \\
+cos(\pi t - \frac{\pi}{4}) & = 0 \\
+\pi t - \frac{\pi}{4} & = \pi k + \frac{\pi}{2}\text{, where } k\in\mathbf{Z} \\
+\pi t & = \pi k + \frac{3\pi}{4} \\ 
+t & = k + \frac{3}{4} \\
+\end{split}
+\end{equation}
+
+\section*{Exercise 7.7 \normalfont Given are the following two real sinusoids:}
+
+\begin{equation}
+\begin{split}
+x_1(t) & = cos(2t + \frac{1}{6}\pi) \\
+x_2(t) & = 2cos(2t + \frac{7}{6}\pi) \\
+\end{split}
+\end{equation}
+
+\section*{\normalfont (c) The sum $x(t) = x_1(t) + x_2(t)$ is again a sinusoid with the same frequency. Write $x(t)$ in standard form.}
+
+\section*{Answer:}
+
+\begin{equation}
+\begin{split}
+x(t) & = cos(2t + \frac{1}{6}\pi) + 2cos(2t + \frac{7}{6}\pi) = R(e^{i(2t + \frac{\pi}{6})} + 2e^{i(2t + \frac{7\pi}{6})}) = \\
+& = R(e^{\frac{\pi}{6}i}e^{2ti} + 2e^{i\frac{7\pi}{6}}e^{2ti}) = R((e^{\frac{\pi}{6}i} + 2e^{i\frac{7\pi}{6}})e^{2ti}) = \\
+& = R((1 + 2e^{\pi i}) e^{\frac{\pi}{6}i} e^{2ti}) = R((1 - 2) e^{\frac{\pi}{6}i} e^{2ti}) = \\
+& = R(-e^{\frac{\pi}{6}i + 2t i} ) = -R(e^{i(2t + \frac{\pi}{6})}) = \\
+& = -cos(2t + \frac{\pi}{6})
+\end{split}
+\end{equation}
+
+\end{document}
+

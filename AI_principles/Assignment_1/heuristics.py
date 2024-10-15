@@ -56,7 +56,6 @@ class Heuristic:
         Returns:
             float: the utility of a board
         """
-        self.eval_count += 1
         state: np.ndarray = board.get_board_state()
         return self._evaluate(player_id, state, self.winning(state, self.game_n))
     
@@ -186,3 +185,110 @@ class SimpleHeuristic(Heuristic):
                         break
 
         return float(max_in_row)
+
+class NoHeuristic(Heuristic):
+    """A simple heuristic
+    Inherits from Heuristic
+    """
+    def __init__(self, game_n: int) -> None:
+        """
+        Args:
+            game_n (int): n in a row required to win
+        """
+        super().__init__(game_n)
+
+
+    def _name(self) -> str:
+        """
+        Returns:
+            str: the name of the heuristic; Simple
+        """
+        return 'Simple'
+    
+    @staticmethod
+    @jit(nopython=True, cache=True)
+    def _evaluate(player_id: int, state: np.ndarray, winner: int) -> float:
+        """Determine utility of a board state
+
+        Args:
+            player_id (int): the player for which to compute the heuristic value
+            state (np.ndarray): the board to check
+            winner (int): 1 or 2 if the respective player won, -1 if the game is a draw, 0 otherwise
+
+        Returns:
+            float: heuristic value for the board state
+        """
+        width: int
+        height: int
+        width, height = state.shape
+
+
+        if winner == 1: # player 1 won
+            return np.inf
+        elif winner < 0: # draw
+            return 0.
+        elif winner == 2: # player 2 won
+            return -np.inf
+        return -1
+    
+class ParityHeuristic(Heuristic):
+    """A simple heuristic
+    Inherits from Heuristic
+    """
+    def __init__(self, game_n: int) -> None:
+        """
+        Args:
+            game_n (int): n in a row required to win
+        """
+        super().__init__(game_n)
+
+
+    def _name(self) -> str:
+        """
+        Returns:
+            str: the name of the heuristic; Simple
+        """
+        return 'Simple'
+    
+    @staticmethod
+    @jit(nopython=True, cache=True)
+    def _evaluate(player_id: int, state: np.ndarray, winner: int) -> float:
+        """Determine utility of a board state
+
+        Args:
+            player_id (int): the player for which to compute the heuristic value
+            state (np.ndarray): the board to check
+            winner (int): 1 or 2 if the respective player won, -1 if the game is a draw, 0 otherwise
+
+        Returns:
+            float: heuristic value for the board state
+        """
+        width: int
+        height: int
+        width, height = state.shape
+
+
+        if winner == 1: # player 1 won
+            return np.inf
+        elif winner < 0: # draw
+            return 0.
+        elif winner == 2: # player 2 won
+            return -np.inf
+
+        eval: float = 0
+        for row in range(height):
+            if height-row % 2 == 1:
+                for col in range(width):
+                    if state[row, col] == 1:
+                        eval += 3
+                        eval += abs(width/2 - col)
+                    if state[row, col] == 2:
+                        eval -= abs(width/2 - col)
+            else:
+                for col in range(width):
+                    if state[row, col] == 1:
+                        eval += abs(width/2 - col)
+                    if state[row, col] == 2:
+                        eval -= 3
+                        eval -= abs(width/2 - col)                        
+        return eval
